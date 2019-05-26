@@ -49,7 +49,9 @@ public class InformesCens {
 	 * Retorna la llista de persones que no tenen informat de quin municipi son
 	 */
 	public List<Persona> llistaPersonesSenseMunicipi() {
-		return null;
+		TypedQuery<Persona> habitantes = em.createQuery("select persona from Persona persona where persona.municipi.id = null ", Persona.class);
+		List<Persona> resultat = habitantes.getResultList();
+		return  resultat;
     }
 
 	/**
