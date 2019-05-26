@@ -39,7 +39,10 @@ public class InformesCens {
 	 * Retorna el nombre d'habitants del municipi que son menors d'edat
 	 */
 	public int nombreHabitantsMenorsEdat(String municipi) {
-			return 0;
+		TypedQuery<Persona> habitantes = em.createQuery("select persona from Persona persona where persona.municipi.nom = :municipi AND persona.edat < 18 ", Persona.class);
+		habitantes.setParameter("municipi", municipi);
+		List<Persona> resultat = habitantes.getResultList();
+		return resultat.size();
 	}
 
 	/**
