@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.formacio.domain.Persona;
@@ -59,7 +60,9 @@ public class InformesCens {
 	 * siii, ja ho se ..., no hem vist com ordenar, pero emprau order by i la vostra intuicio ;-)
 	 */
 	public List<String> llistaNomsPersonesOrdenatPerEdat(String illa) {
-		return null;
+		Query habitantes = em.createQuery("select persona.nom from Persona persona where persona.municipi.illa.nom =:illa order by persona.edat");
+		habitantes.setParameter("illa", illa);
+		return  habitantes.getResultList();
     }
 	
 }
