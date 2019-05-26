@@ -28,7 +28,7 @@ public class Factura {
 	
 
 	@OneToMany
-	@JoinColumn(name = "linea_factura")
+	@JoinColumn(name = "lin_factura")
 
 
 	private Set<LiniaFactura> linies = new HashSet<>();
