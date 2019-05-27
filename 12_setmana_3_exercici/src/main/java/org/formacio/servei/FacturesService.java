@@ -40,10 +40,18 @@ public class FacturesService {
 			nuevalineafactura.setTotal(totalProducte);
 			factura.get().getLinies().add(nuevalineafactura);
 			facturaRepo.save(factura.get());
-			
+			notificaPremi(factura.get());
 			
 		}
 		return factura.get();
 	
+	}
+	
+	
+	public void notificaPremi(Factura factura){
+		final int NUM_LINIES_AMB_PREMI = 4;
+		if(factura.getLinies().size() >= NUM_LINIES_AMB_PREMI){
+			fidalitzacioServei.notificaRegal(factura.getClient().getEmail());
+		}
 	}
 }
