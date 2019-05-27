@@ -27,7 +27,7 @@ public class Factura {
 	private Client client;
 	
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "lin_factura")
 
 
